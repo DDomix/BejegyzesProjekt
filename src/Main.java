@@ -69,6 +69,7 @@ public class Main {
             }
         }
         System.out.printf("%d db 15 nél kevesebb likeos bejegyzés van",kevesebb);
+
         }
     private static void randomlikeok(){
         Random rnd=new Random();
