@@ -2,20 +2,17 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private  static List<Bejegyzes> bejegyzesek=new ArrayList<>();
     public static void main(String[] args) {
         Bejegyzes bejegyzes1=new Bejegyzes("Troll tanár","Idén egy vizsgaremeket sem fogok átengedni, hogy mindenkinek ősszel kelljen vizsgáznia.");
         Bejegyzes bejegyzes2 =new Bejegyzes("Junior fejlesztö","Azt hiszi, hogy programozni fog, de valójában bugfixál, és oktatási felületről tanul..");
-        bejegyzesek.add(bejegyzes1);
-        bejegyzesek.add(bejegyzes2);
-        System.out.println(bejegyzes1);
-        System.out.println(bejegyzes2);
+        //bejegyzesek.add(bejegyzes1);
+        //bejegyzesek.add(bejegyzes2);
+        //System.out.println(bejegyzes1);
+        //System.out.println(bejegyzes2);
         try {
             bejegyzesfelvetel();
         }
@@ -32,14 +29,28 @@ public class Main {
             System.out.println("hiba a beolvasáskor");
             e.printStackTrace();
         }
+        randomlikeok();
+        for (Bejegyzes a:bejegyzesek) {
+            System.out.println(a);
+        }
 
+    }
+    private static void randomlikeok(){
+        Random rnd=new Random();
+        int likeok= bejegyzesek.size()*20;
+        for (int i = 0; i < likeok; i++) {
+            int randomelem=rnd.nextInt(bejegyzesek.size());
+            bejegyzesek.get(randomelem).like();
+        }
     }
     private static void bejegyzesfajlbol(String fajlnév) throws IOException {
         FileReader fr=new FileReader(fajlnév);
         BufferedReader br =new BufferedReader(fr);
         String sor=br.readLine();
-        while (sor!=null&&sor.equals("")){
+        while (sor!=null&&!sor.equals("")){
             String[] adatok=sor.split(";");
+            Bejegyzes bejegyzes=new Bejegyzes(adatok[0],adatok[1]);
+            bejegyzesek.add(bejegyzes);
             sor=br.readLine();
         }
         br.close();
