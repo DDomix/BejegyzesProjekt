@@ -49,4 +49,5 @@ public class Bejegyzes {
             szerzo,likeok,letrejott,getSzerkesztve(),tartalom);
 
     }
+
 }

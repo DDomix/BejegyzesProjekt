@@ -38,7 +38,30 @@ public class Main {
         for (Bejegyzes a:bejegyzesek) {
             System.out.println(a);
         }
-    }
+        int maxlikeszam=0;
+        for (int i = 0; i < bejegyzesek.size(); i++) {
+            int szam=(bejegyzesek.get(i).getLikeok());
+            if (szam>maxlikeszam){
+                maxlikeszam=szam;
+            }
+        }
+        System.out.println(maxlikeszam);
+        int vane=0;
+        for (int i = 0; i < bejegyzesek.size(); i++) {
+            int szam=(bejegyzesek.get(i).getLikeok());
+            if (szam>35){
+                vane=1;
+            }
+            else {
+                vane=2;
+            }
+        }
+        if (vane==1){
+            System.out.println("van 35 nél nagyobb likeszám");
+        }else {
+            System.out.println("nincs 35 nél nagyobb likeszám");
+        }
+        }
     private static void randomlikeok(){
         Random rnd=new Random();
         int likeok= bejegyzesek.size()*20;
