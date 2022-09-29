@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,12 @@ public class Main {
         Bejegyzes bejegyzes2 =new Bejegyzes("Junior fejlesztö","Azt hiszi, hogy programozni fog, de valójában bugfixál, és oktatási felületről tanul..");
         bejegyzesek.add(bejegyzes1);
         bejegyzesek.add(bejegyzes2);
-        bejegyzesfelvetel();
+        try {
+            bejegyzesfelvetel();
+        }
+        catch (InputMismatchException e){
+            System.out.println("nem pozitív egész számot adtál meg");
+        }
     }
     private static void bejegyzesfelvetel(){
         Scanner sc=new Scanner(System.in);
