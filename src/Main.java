@@ -61,6 +61,14 @@ public class Main {
         }else {
             System.out.println("nincs 35 nél nagyobb likeszám");
         }
+        int kevesebb=0;
+        for (int i = 0; i < bejegyzesek.size(); i++) {
+            int szam=(bejegyzesek.get(i).getLikeok());
+            if (szam<15){
+                kevesebb++;
+            }
+        }
+        System.out.printf("%d db 15 nél kevesebb likeos bejegyzés van",kevesebb);
         }
     private static void randomlikeok(){
         Random rnd=new Random();
