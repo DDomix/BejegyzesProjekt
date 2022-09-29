@@ -24,7 +24,8 @@ public class Bejegyzes {
     }
 
     public void setTartalom(String tartalom) {
-        return;
+        this.tartalom = tartalom;
+        this.szerkesztve=LocalDateTime.now();
     }
 
     public int getLikeok() {
@@ -36,11 +37,7 @@ public class Bejegyzes {
     }
 
     public LocalDateTime getSzerkesztve() {
-        if (szerkesztve==letrejott){
-            return null;
-        }else{
-            return szerkesztve;
-        }
+        return  szerkesztve;
     }
     public void like(){
         likeok+=1;

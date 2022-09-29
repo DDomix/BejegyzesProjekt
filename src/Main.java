@@ -9,10 +9,11 @@ public class Main {
     public static void main(String[] args) {
         Bejegyzes bejegyzes1=new Bejegyzes("Troll tanár","Idén egy vizsgaremeket sem fogok átengedni, hogy mindenkinek ősszel kelljen vizsgáznia.");
         Bejegyzes bejegyzes2 =new Bejegyzes("Junior fejlesztö","Azt hiszi, hogy programozni fog, de valójában bugfixál, és oktatási felületről tanul..");
-        //bejegyzesek.add(bejegyzes1);
-        //bejegyzesek.add(bejegyzes2);
-        //System.out.println(bejegyzes1);
-        //System.out.println(bejegyzes2);
+        bejegyzesek.add(bejegyzes1);
+        bejegyzesek.add(bejegyzes2);
+        System.out.println(bejegyzes1);
+        System.out.println(bejegyzes2);
+        System.out.println('\n');
         try {
             bejegyzesfelvetel();
         }
@@ -30,10 +31,13 @@ public class Main {
             e.printStackTrace();
         }
         randomlikeok();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Adj meg egy szöveget, mi legyen a második bejegyzés tartalma:");
+        String masodikbejegyzestartalma=sc.nextLine();
+        bejegyzesek.get(1).setTartalom(masodikbejegyzestartalma);
         for (Bejegyzes a:bejegyzesek) {
             System.out.println(a);
         }
-
     }
     private static void randomlikeok(){
         Random rnd=new Random();
