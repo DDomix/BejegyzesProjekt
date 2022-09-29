@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -10,12 +14,35 @@ public class Main {
         Bejegyzes bejegyzes2 =new Bejegyzes("Junior fejlesztö","Azt hiszi, hogy programozni fog, de valójában bugfixál, és oktatási felületről tanul..");
         bejegyzesek.add(bejegyzes1);
         bejegyzesek.add(bejegyzes2);
+        System.out.println(bejegyzes1);
+        System.out.println(bejegyzes2);
         try {
             bejegyzesfelvetel();
         }
         catch (InputMismatchException e){
             System.out.println("nem pozitív egész számot adtál meg");
         }
+        String fajlnev="bejegyzesek.csv";
+        try {
+            bejegyzesfajlbol(fajlnev);
+        }
+        catch (FileNotFoundException e){
+            System.out.println("a fajl nem talalhato");
+        }catch (IOException e){
+            System.out.println("hiba a beolvasáskor");
+            e.printStackTrace();
+        }
+
+    }
+    private static void bejegyzesfajlbol(String fajlnév) throws IOException {
+        FileReader fr=new FileReader(fajlnév);
+        BufferedReader br =new BufferedReader(fr);
+        String sor=br.readLine();
+        while (sor!=null&&sor.equals("")){
+            String[] adatok=sor.split(";");
+            sor=br.readLine();
+        }
+        br.close();
     }
     private static void bejegyzesfelvetel(){
         Scanner sc=new Scanner(System.in);
